@@ -7,6 +7,7 @@ using DemoAPI.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,23 @@ namespace DemoAPI
         {
             services.AddControllers();
 
+            // Add DB Context
+            services.AddDbContext<DemoContext>(options => 
+                {
+                    options.UseNpgsql(Configuration.GetConnectionString("Database"));
+                    options.UseSnakeCaseNamingConvention();
+                }
+            );
+
+            // Local base Repo
             services.AddSingleton<IPersonRepo, PersonRepo>();
+
+            // DB Access Repo
+            services.AddScoped<IDepartementRepo, DepartementRepo>();
+            services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+
+            // Swagger
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +63,13 @@ namespace DemoAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Swagger Middleware
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo Web API");
             });
         }
     }
