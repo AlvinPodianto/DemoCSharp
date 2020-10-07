@@ -43,5 +43,16 @@ namespace DemoAPI.Controllers
             else
                 return BadRequest(result.Reason);
         }
+
+        [HttpDelete("{id:long}")]
+        public ActionResult<EmployeeDetailVM> Delete(long id)
+        {
+            var result = _departementRepo.DeleteDepartement(id);
+
+            if (result.Success)
+                return Ok("Success");
+            else
+                return BadRequest(result.Reason);
+        }
     }
 }

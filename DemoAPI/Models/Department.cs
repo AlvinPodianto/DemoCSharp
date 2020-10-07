@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using DemoAPI.Contracts;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DemoAPI.Models
 {
-    public class Department : BaseEntity
+    public class Department : BaseEntity, IEntity
     {
         [MaxLength(20)]
         public string Name { get; set; }

@@ -8,13 +8,17 @@ using System.Linq;
 
 namespace DemoAPI.Repos
 {
+    // Repo act as Business Facade ( Logic Handler )
+    // Repository act as Data Access
     public class DepartementRepo : IDepartementRepo
     {
         private readonly DemoContext _context;
+        private readonly IDepartementRepository _repository;
 
-        public DepartementRepo(DemoContext context)
+        public DepartementRepo(DemoContext context, IDepartementRepository repository)
         {
             _context = context;
+            _repository = repository;
         }
 
         public SuccessResponse AddDepartement(CreateDepartemenVM vm)
@@ -28,18 +32,10 @@ namespace DemoAPI.Repos
                 var department = new Department
                 {
                     Name = vm.Name,
-                    Location = vm.Location,
-                    IsActive = true,
-                    IsDeleted = false,
-                    CreatedBy = "Actor",
-                    CreatedDate = DateTime.Now,
-
-                    ModifiedBy = "Actor",
-                    ModifiedDate = DateTime.Now
+                    Location = vm.Location
                 };
 
-                _context.Departments.Add(department);
-                _context.SaveChanges();
+                _repository.Create(department);
 
                 result.Success = true;
             }
@@ -49,7 +45,35 @@ namespace DemoAPI.Repos
 
         public SuccessResponse DeleteDepartement(long id)
         {
-            throw new NotImplementedException();
+            var result = new SuccessResponse();
+
+            var departement = _context.Departments.Include(x=> x.Employees)
+                                                  .Where(x=> x.Id == id)
+                                                  .FirstOrDefault();
+
+            if (departement == null)
+                result.Reason = $"Departement with ID'{id}' not found.";
+            else 
+            {
+                departement.IsDeleted = true;
+                departement.ModifiedDate = DateTime.Now;
+
+                departement.Employees = departement.Employees.Select(x => 
+                                                                       { 
+                                                                           x.IsDeleted = true; 
+                                                                           x.ModifiedDate = DateTime.Now; 
+                                                                           
+                                                                           return x; 
+                                                                       })
+                                                             .ToList();
+
+                _context.Departments.Update(departement);
+                _context.SaveChanges();
+
+                result.Success = true;
+            }
+
+            return result;
         }
 
         public DepartementDetailVM GetDepartmentById(long id) =>

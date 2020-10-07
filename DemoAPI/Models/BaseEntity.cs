@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DemoAPI.Contracts;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DemoAPI.Models
 {
-    public class BaseEntity
+    public class BaseEntity : IEntity
     {
         [Key]
         public long Id { get; set; }

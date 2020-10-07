@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using DemoAPI.Contracts;
 using DemoAPI.Repos;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +45,11 @@ namespace DemoAPI
             // DB Access Repo
             services.AddScoped<IDepartementRepo, DepartementRepo>();
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+
+            services.AddScoped<IDepartementRepository, Repository>();
+
+            // Mediatr
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             // Swagger
             services.AddSwaggerGen();
