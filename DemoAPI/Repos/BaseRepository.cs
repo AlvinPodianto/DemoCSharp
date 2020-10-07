@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DemoAPI.Repos
 {
@@ -61,7 +62,11 @@ namespace DemoAPI.Repos
 
         public virtual IEnumerable<IEntity> GetEntities() =>
             _context.Set<IEntity>().AsEnumerable();
-        
+
+        public IEnumerable<IEntity> GetEntities(Expression<Func<IEntity, bool>> predicate) =>
+            _context.Set<IEntity>().Where(predicate)
+                                   .AsEnumerable();
+
         public virtual bool Update(IEntity entity)
         {
             try 
