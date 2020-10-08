@@ -43,7 +43,6 @@ namespace DemoAPI
             services.AddSingleton<IPersonRepo, PersonRepo>();
 
             // DB Access Repo
-            services.AddScoped<IDepartementRepo, DepartementRepo>();
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 
             services.AddScoped<IDepartementRepository, DepartementRepository>();
