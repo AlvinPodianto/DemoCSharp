@@ -55,15 +55,15 @@ namespace DemoAPI.Controllers
                 return BadRequest(result.Reason);
         }
 
-        //[HttpDelete("{id:long}")]
-        //public ActionResult<EmployeeDetailVM> Delete(long id)
-        //{
-        //    var result = _departementRepo.DeleteDepartement(id);
+        [HttpDelete("{id:long}")]
+        public ActionResult<EmployeeDetailVM> Delete(long id)
+        {
+            var result = _mediatr.Send(new DeleteDepartementCommand { Id = id }).Result;
 
-        //    if (result.Success)
-        //        return Ok("Success");
-        //    else
-        //        return BadRequest(result.Reason);
-        //}
+            if (result.Success)
+                return Ok("Success");
+            else
+                return BadRequest(result.Reason);
+        }
     }
 }

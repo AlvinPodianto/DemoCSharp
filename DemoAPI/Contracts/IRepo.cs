@@ -11,15 +11,6 @@ namespace DemoAPI.Contracts
         SuccessResponse AddPerson(Person person);
     }
 
-    public interface IDepartementRepo 
-    {
-        List<DepartementVM> GetDepartments(int page, int itemsPerPage);
-        DepartementDetailVM GetDepartmentById(long id);
-        SuccessResponse AddDepartement(CreateDepartemenVM department);
-        SuccessResponse UpdateDepartement(Department department);
-        SuccessResponse DeleteDepartement(long id);
-    }
-
     public interface IEmployeeRepo
     {
         List<EmployeeVM> GetEmployees (int page, int itemsPerPage);
