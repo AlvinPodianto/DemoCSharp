@@ -8,10 +8,10 @@ namespace DemoAPI.Repos
 {
     public class BaseRepository : IRepository<IEntity>
     {
-        private readonly DemoContext _context;
+        protected readonly DemoContext Context;
 
         public BaseRepository(DemoContext context) =>
-            _context = context;
+            Context = context;
 
         public virtual bool Create(IEntity entity)
         {
@@ -26,8 +26,8 @@ namespace DemoAPI.Repos
                 entity.ModifiedBy = "Actor";
                 entity.ModifiedDate = DateTime.Now;
 
-                _context.Set<IEntity>().Add(entity);
-                _context.SaveChanges();
+                Context.Set<IEntity>().Add(entity);
+                Context.SaveChanges();
 
                 return true;
             }
@@ -46,8 +46,8 @@ namespace DemoAPI.Repos
                 entity.ModifiedBy = "Actor";
                 entity.ModifiedDate = DateTime.Now;
 
-                _context.Set<IEntity>().Update(entity);
-                _context.SaveChanges();
+                Context.Set<IEntity>().Update(entity);
+                Context.SaveChanges();
 
                 return true;
             }
@@ -58,13 +58,13 @@ namespace DemoAPI.Repos
         }
 
         public virtual IEntity GetById(long id) =>
-            _context.Set<IEntity>().Find(id);
+            Context.Set<IEntity>().Find(id);
 
         public virtual IEnumerable<IEntity> GetEntities() =>
-            _context.Set<IEntity>().AsEnumerable();
+            Context.Set<IEntity>().AsEnumerable();
 
         public IEnumerable<IEntity> GetEntities(Expression<Func<IEntity, bool>> predicate) =>
-            _context.Set<IEntity>().Where(predicate)
+            Context.Set<IEntity>().Where(predicate)
                                    .AsEnumerable();
 
         public virtual bool Update(IEntity entity)
@@ -76,8 +76,8 @@ namespace DemoAPI.Repos
                 entity.ModifiedBy = "Actor";
                 entity.ModifiedDate = DateTime.Now;
 
-                _context.Set<IEntity>().Update(entity);
-                _context.SaveChanges();
+                Context.Set<IEntity>().Update(entity);
+                Context.SaveChanges();
 
                 return true;
             }

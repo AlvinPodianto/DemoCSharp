@@ -46,7 +46,7 @@ namespace DemoAPI
             services.AddScoped<IDepartementRepo, DepartementRepo>();
             services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 
-            services.AddScoped<IDepartementRepository, Repository>();
+            services.AddScoped<IDepartementRepository, DepartementRepository>();
 
             // Mediatr
             services.AddMediatR(Assembly.GetExecutingAssembly());
