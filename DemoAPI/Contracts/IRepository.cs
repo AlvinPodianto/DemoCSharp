@@ -7,12 +7,12 @@ namespace DemoAPI.Contracts
 {
     public interface IRepository<T> where T : IEntity
     {
-        IEnumerable<IEntity> GetEntities();
-        IEnumerable<IEntity> GetEntities(Expression<Func<IEntity, bool>> predicate);
-        IEntity GetById(long id);
-        bool Create(IEntity entity);
-        bool Update(IEntity entity);
-        bool Delete(IEntity entity);
+        IEnumerable<T> GetEntities();
+        IEnumerable<T> GetEntities(Expression<Func<T, bool>> predicate);
+        T GetById(long id);
+        bool Create(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
     }
 
     public interface IDepartementRepository : IRepository<Department> { }

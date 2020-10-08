@@ -1,4 +1,5 @@
 ﻿using DemoAPI.Contracts;
+using DemoAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,14 @@ using System.Linq.Expressions;
 
 namespace DemoAPI.Repos
 {
-    public class BaseRepository : IRepository<IEntity>
+    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly DemoContext Context;
 
         public BaseRepository(DemoContext context) =>
             Context = context;
 
-        public virtual bool Create(IEntity entity)
+        public virtual bool Create(T entity)
         {
             try
             {
@@ -37,7 +38,7 @@ namespace DemoAPI.Repos
             }
         }
 
-        public virtual bool Delete(IEntity entity)
+        public virtual bool Delete(T entity)
         {
             try
             {
@@ -57,17 +58,17 @@ namespace DemoAPI.Repos
             }
         }
 
-        public virtual IEntity GetById(long id) =>
-            Context.Set<IEntity>().Find(id);
+        public virtual T GetById(long id) =>
+            Context.Set<T>().Find(id);
 
-        public virtual IEnumerable<IEntity> GetEntities() =>
-            Context.Set<IEntity>().AsEnumerable();
+        public virtual IEnumerable<T> GetEntities() =>
+            Context.Set<T>().AsEnumerable();
 
-        public IEnumerable<IEntity> GetEntities(Expression<Func<IEntity, bool>> predicate) =>
-            Context.Set<IEntity>().Where(predicate)
-                                   .AsEnumerable();
+        public IEnumerable<T> GetEntities(Expression<Func<T, bool>> predicate) =>
+            Context.Set<T>().Where(predicate)
+                            .AsEnumerable();
 
-        public virtual bool Update(IEntity entity)
+        public virtual bool Update(T entity)
         {
             try 
             {
