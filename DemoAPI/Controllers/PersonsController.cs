@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DemoAPI.Contracts;
-using DemoAPI.Models;
+using DemoDataService.Contracts;
+using DemoDataService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DemoAPI.Controllers
+namespace DemoDataService.Controllers
 {
     [Route("[controller]")]
     [ApiController]

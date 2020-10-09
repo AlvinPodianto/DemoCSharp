@@ -1,6 +1,6 @@
-﻿using DemoAPI.CQRS.Commands;
-using DemoAPI.CQRS.Queries;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.CQRS.Commands;
+using DemoDataService.CQRS.Queries;
+using DemoDataService.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace DemoAPI.Controllers
+namespace DemoDataService.Controllers
 {
     [Route("[controller]")]
     [ApiController]

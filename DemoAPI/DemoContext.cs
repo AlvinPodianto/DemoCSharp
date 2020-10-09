@@ -1,7 +1,7 @@
-﻿using DemoAPI.Models;
+﻿using DemoDataService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DemoAPI
+namespace DemoDataService
 {
     public class DemoContext : DbContext
     {

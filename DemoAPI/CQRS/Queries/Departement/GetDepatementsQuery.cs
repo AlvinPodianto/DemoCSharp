@@ -1,12 +1,12 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.Contracts;
+using DemoDataService.ViewModels;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DemoAPI.CQRS.Queries
+namespace DemoDataService.CQRS.Queries
 {
     public class GetDepatementsQuery : IRequest<List<DepartementVM>>
     {

@@ -1,11 +1,11 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
+﻿using DemoDataService.Contracts;
+using DemoDataService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace DemoAPI.Repos
+namespace DemoDataService.Repos
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {

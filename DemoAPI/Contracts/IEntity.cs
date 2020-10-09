@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DemoAPI.Contracts
+namespace DemoDataService.Contracts
 {
     public interface IEntity
     {

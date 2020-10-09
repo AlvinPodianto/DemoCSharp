@@ -1,8 +1,8 @@
-﻿using DemoAPI.Contracts;
+﻿using DemoDataService.Contracts;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DemoAPI.Models
+namespace DemoDataService.Models
 {
     public class Department : BaseEntity, IEntity
     {

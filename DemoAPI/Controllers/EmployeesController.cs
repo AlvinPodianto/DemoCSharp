@@ -1,8 +1,8 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.Contracts;
+using DemoDataService.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DemoAPI.Controllers
+namespace DemoDataService.Controllers
 {
     [Route("[controller]")]
     [ApiController]

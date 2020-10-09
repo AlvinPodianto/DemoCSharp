@@ -1,9 +1,9 @@
-﻿using DemoAPI.Contracts;
+﻿using DemoDataService.Contracts;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DemoAPI.Models
+namespace DemoDataService.Models
 {
     public class Employee : BaseEntity, IEntity
     {

@@ -1,10 +1,10 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
+﻿using DemoDataService.Contracts;
+using DemoDataService.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DemoAPI.CQRS.Commands
+namespace DemoDataService.CQRS.Commands
 {
     public class DeleteDepartementCommand : IRequest<SuccessResponse>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DemoAPI.Models
+namespace DemoDataService.Models
 {
     public class Person
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DemoAPI.Migrations
+namespace DemoDataService.Migrations
 {
     public partial class FixForeignKey : Migration
     {

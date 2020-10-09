@@ -1,8 +1,8 @@
-﻿using DemoAPI.Models;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.Models;
+using DemoDataService.ViewModels;
 using System.Collections.Generic;
 
-namespace DemoAPI.Contracts
+namespace DemoDataService.Contracts
 {
     public interface IPersonRepo
     {

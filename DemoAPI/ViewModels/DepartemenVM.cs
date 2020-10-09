@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DemoAPI.ViewModels
+namespace DemoDataService.ViewModels
 {
     public class CreateDepartemenVM
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DemoAPI.ViewModels
+namespace DemoDataService.ViewModels
 {
     public class CreateEmployeeVM 
     {

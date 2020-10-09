@@ -1,12 +1,12 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.Contracts;
+using DemoDataService.Models;
+using DemoDataService.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DemoAPI.Repos
+namespace DemoDataService.Repos
 {
     public class EmployeeRepo : IEmployeeRepo
     {

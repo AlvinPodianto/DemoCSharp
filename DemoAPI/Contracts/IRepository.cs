@@ -1,9 +1,9 @@
-﻿using DemoAPI.Models;
+﻿using DemoDataService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DemoAPI.Contracts
+namespace DemoDataService.Contracts
 {
     public interface IRepository<T> where T : IEntity
     {

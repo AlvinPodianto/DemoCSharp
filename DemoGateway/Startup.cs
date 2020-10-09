@@ -1,16 +1,11 @@
-using System.Reflection;
-using DemoDataService.Contracts;
-using DemoDataService.Repos;
-using DemoDataService.Services;
-using MediatR;
+using DemoGateway.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace DemoDataService
+namespace DemoGateway
 {
     public class Startup
     {
@@ -25,27 +20,9 @@ namespace DemoDataService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddGrpc();
 
-            // Add DB Context
-            services.AddDbContext<DemoContext>(options => 
-                {
-                    options.UseNpgsql(Configuration.GetConnectionString("Database"));
-                    options.UseSnakeCaseNamingConvention();
-                }
-            );
-
-            // Local base Repo
-            services.AddSingleton<IPersonRepo, PersonRepo>();
-
-            // DB Access Repo
-            services.AddScoped<IEmployeeRepo, EmployeeRepo>();
-
-            services.AddScoped<IDepartementRepository, DepartementRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
-            // Mediatr
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            // Add Grpc Client
+            services.AddSingleton<IGrpcClient, GrpcClient>();
 
             // Swagger
             services.AddSwaggerGen();
@@ -65,8 +42,6 @@ namespace DemoDataService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<DepartementService>();
-
                 endpoints.MapControllers();
             });
 
@@ -74,7 +49,7 @@ namespace DemoDataService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo Web API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Demo Gateway");
             });
         }
     }

@@ -1,9 +1,9 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
+﻿using DemoDataService.Contracts;
+using DemoDataService.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace DemoAPI.Repos
+namespace DemoDataService.Repos
 {
     public class DepartementRepository : BaseRepository<Department>, IDepartementRepository
     {

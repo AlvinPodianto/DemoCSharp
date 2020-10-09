@@ -1,12 +1,12 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
-using DemoAPI.ViewModels;
+﻿using DemoDataService.Contracts;
+using DemoDataService.Models;
+using DemoDataService.ViewModels;
 using MediatR;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DemoAPI.CQRS.Commands
+namespace DemoDataService.CQRS.Commands
 {
     public class CreateDepartementCommand : IRequest<SuccessResponse>
     {
