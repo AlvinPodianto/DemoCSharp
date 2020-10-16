@@ -14,10 +14,10 @@ namespace DemoDataService.Services
         public DepartementService(IMediator mediator) =>
             _mediatr = mediator;
 
-        public override async Task<SuccessReply> AddDepartement(AddDepartementMessage request, ServerCallContext context)
+        public override Task<SuccessReply> AddDepartement(AddDepartementMessage request, ServerCallContext context)
         {
-            var result = await _mediatr.Send(new CreateDepartementCommand { Payload = new CreateDepartemenVM { Name = request.Name, Location = request.Location } });
-            return new SuccessReply { Success = result.Success, Reason = result.Reason };
+            var result = _mediatr.Send(new CreateDepartementCommand { Payload = new CreateDepartemenVM { Name = request.Name, Location = request.Location } }).Result;
+            return Task.Run(() => new SuccessReply { Success = result.Success, Reason = result.Reason });
         }
     }
 }
